@@ -15,10 +15,15 @@ namespace Auora.Pages
         }
 
         public List<Produto> Produtos { get; set; } = new List<Produto>();
+        public Produto ProdutoDestaque { get; set; }
 
         public async Task OnGetAsync()
         {
-            Produtos = await _service.GetAsync();
+           var todosProdutos = await _service.GetAsync();
+
+            ProdutoDestaque = todosProdutos.OrderByDescending(p => p.CreatedAt).FirstOrDefault();
+
+            Produtos = todosProdutos;
         }
     }
 }

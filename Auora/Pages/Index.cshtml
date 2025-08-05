@@ -60,9 +60,11 @@
         </div>
     </div>
 
+    @if (Model.ProdutoDestaque != null){
     <div class="grade-mx d-flex flex-column justify-content-between">
+            <img class=" grade-mx-img" src="@Url.Content(Model.ProdutoDestaque.Images.FirstOrDefault())" alt="Alternate Text" />
         <div class="d-flex flex-row justify-content-between p-3">
-            <p class="blur-text">Teste</p>
+            <p class="blur-text">@Model.ProdutoDestaque.Name</p>
 
             <button type="button" class=" rounded-circle align-items-center border-0" style="width: 50px; height: 50px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
@@ -83,80 +85,58 @@
             </div>
 
             <div class="p-2 d-flex rounded-4" style="width: 5rem; height: 3rem; background-color: #6a6854; color: white;">
-                <p class="position-relative m-auto ">$ 5.99</p>
+                <p class="position-relative m-auto ">$ @Model.ProdutoDestaque.Price</p>
             </div>
         </div>
+            
     </div>
+    }
 </div>
 
 
-<div class="carousel-container w-100 position-relative d-flex flex-column justify-content-center align-items-center carousel-dark">
+<div class="carousel-container w-100 mb-5 position-relative d-flex flex-column justify-content-center align-items-center carousel-dark">
     <div class="w-100 d-flex">
         <h1 class="m-5 me-4 fs-3 bolder">Highlights</h1>
     </div>
     <button class="carousel-control-prev custom-prev" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
     </button>
-    <div id="multiItemCarousel" class="carousel slide" data-bs-touch="true">
+    <div id="multiItemCarousel" class="carousel slide noselect" data-bs-touch="true">
         <div class="carousel-inner">
 
             <!-- Primeiro slide -->
             <div class="carousel-item active">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img1.jpg" class="card-img-top img-fluid">
-                            <div class="card-body">Produto 1</div>
+                    @foreach (var produto in Model.Produtos.Take(4))
+                    {
+                        <div class="col-md-3 ">
+                            <div class="card carousel-card">
+                                <img src="@Url.Content(produto.Images.FirstOrDefault())" class="card-img-top img-fluid rounded" alt="@produto.Name" draggable="false">
+                                <div class="card-img-overlay">
+                                    <p class="carousel-card-title p-3 rounded text-nowrap">@produto.Name</p>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img2.jpg" class="card-img-top">
-                            <div class="card-body">Produto 2</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img3.jpg" class="card-img-top">
-                            <div class="card-body">Produto 3</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img3.jpg" class="card-img-top">
-                            <div class="card-body">Produto 4</div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
 
             <!-- Segundo slide -->
             <div class="carousel-item">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img4.jpg" class="card-img-top">
-                            <div class="card-body">Produto 5</div>
+                    @foreach (var produto in Model.Produtos.Skip(4).Take(4))
+                    {
+                        <div class="col-md-3">
+                            <div class="card carousel-card">
+                                <img src="@Url.Content(produto.Images.FirstOrDefault())" class="card-img-top img-fluid rounded" alt="@produto.Name" draggable="false">
+                                <div class="card-img-overlay">
+                                    <p class="carousel-card-title p-3 rounded text-nowrap">@produto.Name</p>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img5.jpg" class="card-img-top">
-                            <div class="card-body">Produto 6</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img6.jpg" class="card-img-top">
-                            <div class="card-body">Produto 7</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="img6.jpg" class="card-img-top">
-                            <div class="card-body">Produto 8</div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
 

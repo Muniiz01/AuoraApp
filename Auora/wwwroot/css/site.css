@@ -272,33 +272,40 @@ body {
 
 .grade-mx {
     width: 35rem;
+    position: relative;
     height: 24rem;
-    background-image: url('/media/Soraimg_img_1.webp');
-    background-size: cover;
     border-radius: 20px;
     overflow: hidden;
 }
 
-    .grade-mx img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        z-index: -1;
-    }
+.grade-mx-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche sem distorcer */
+    z-index: -1;
+}
 
-    .grade-mx div button:hover {
-        background-color: #cbcbcbc5;
-    }
+.grade-mx div button:hover {
+    background-color: #cbcbcbc5;
+}
 
 
 /* Carousel */
 
+.noselect {
+    user-select: none; /* Bloqueia seleção de texto */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+}
 .carousel-container {
 }
 
 .carousel {
     width: 90%;
+
 }
 
 .custom-prev, .custom-next {
@@ -321,7 +328,25 @@ body {
     right: 30px;
 }
 
+.carousel-card img{
+    height: 19rem;
+    object-fit: cover;
+}
 
+.carousel-card-title {
+    background: #6a68545a;
+    font-weight: 700;
+    font-family: sans-serif;
+    color: white;
+    margin-top: 12rem;
+    margin-left: 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    max-width: 210px;
+}
 
 
 /* container grid */
