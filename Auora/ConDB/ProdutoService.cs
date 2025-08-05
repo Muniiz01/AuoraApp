@@ -58,6 +58,8 @@ namespace Auora.ConDB
 
         [BsonElement("updatedAt")]
         public DateTime UpdatedAt { get; set; }
+        [BsonElement("resume")]
+        public string Resume { get; set; }
     }
 
     public class ProdutoAttributes
