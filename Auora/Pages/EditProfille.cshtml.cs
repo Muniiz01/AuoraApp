@@ -2,6 +2,7 @@ using Auora.ConDB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace Auora.Pages
 {
@@ -84,7 +85,7 @@ namespace Auora.Pages
         }
         public class ImageRequest
         {
-            public string imgPath { get; set; }
+            public string? imgPath { get; set; }
         }
         public async Task<IActionResult> OnPostUpdateImageAsync([FromBody] ImageRequest request)
         {
@@ -142,6 +143,13 @@ namespace Auora.Pages
                 var existingUser = await _userService.GetByIdAsync(userId);
                 if (existingUser == null)
                     return new JsonResult(new { success = false, message = "Usuário inválido." });
+
+                var oldImg = existingUser.imgPath;
+                if (System.IO.File.Exists($"wwwroot{oldImg}"))
+                {
+                    System.IO.File.Delete($"wwwroot{oldImg}");
+                }
+                
 
                 existingUser.imgPath = relativePath;
                 await _userService.UpdateProfileAsync(userId, existingUser, 1);

@@ -2,13 +2,25 @@
 
 // salvar imagem da galeria
 function saveImage(path) {
-    updateImageOnServer(path, false);
+
+    document.getElementById("bttServerSave").addEventListener("click", function () {
+        updateImageOnServer(path, false);
+    })
+
+
+    document.querySelectorAll(".image-grid img").forEach(img => {
+        img.classList.remove("selected");
+    });
+    event.target.classList.add("selected");
 }
 
-// upload do computador
+//função upload do computador
+
 document.getElementById("uploadInput").addEventListener("change", function () {
     const file = this.files[0];
     if (!file) return;
+
+    document.getElementById("bttUploadSave").style.display = "block"
 
     const formData = new FormData();
     formData.append("file", file);
@@ -16,26 +28,29 @@ document.getElementById("uploadInput").addEventListener("change", function () {
     const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
     formData.append("__RequestVerificationToken", token);
 
-    fetch('/EditProfille?handler=UploadImage', {
-        method: 'POST',
-        body: formData
+    document.getElementById("bttUploadSave").addEventListener("click", function () {  
+        fetch('/EditProfille?handler=UploadImage', {
+            method: 'POST',
+            body: formData
+        })
+            .then(r => {
+                if (!r.ok) throw new Error("Erro ao enviar imagem");
+                return r.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    updateProfileImagePreview(data.path);
+                    document.getElementById("imageStatus").innerText = "Imagem enviada e atualizada!";
+                } else {
+                    document.getElementById("imageStatus").innerText = "Erro: " + data.message;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById("imageStatus").innerText = "Erro ao comunicar com o servidor.";
+            });
+
     })
-        .then(r => {
-            if (!r.ok) throw new Error("Erro ao enviar imagem");
-            return r.json();
-        })
-        .then(data => {
-            if (data.success) {
-                updateProfileImagePreview(data.path);
-                document.getElementById("imageStatus").innerText = "Imagem enviada e atualizada!";
-            } else {
-                document.getElementById("imageStatus").innerText = "Erro: " + data.message;
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById("imageStatus").innerText = "Erro ao comunicar com o servidor.";
-        });
 });
 
 // função genérica para atualizar no servidor

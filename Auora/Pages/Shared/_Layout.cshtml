@@ -29,7 +29,7 @@
             <label class="text-emp navbar-brand" href="#">Auora</label>
         </div>
         <form class="search-box d-flex align-items-center">
-            <input class="input-search " type="text" maxlength="" name="name" value="" placeholder="Search..." />
+            <input class="input-search " type="text" maxlength="1" name="name" value="" placeholder="Search..." />
             <button class="button-search-nav position-absolute d-flex rounded-circle justify-content-center align-items-center" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
@@ -58,7 +58,7 @@
                 <!-- button trigger modal login -->
                 @if (user != null)
                 {
-                    <button id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false" type="button" class="button-login rounded-2 border-0 border-bottom dropdown-toggle ps-3 pe-3 pt-1 pb-1" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-auto-close="outside">@(user.Name.Length > 10 ? user.Name.Substring(0, 10) + "..." : user.Name)</button>
+                    <button id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false" type="button" class="button-login rounded-2 border-0 border-bottom dropdown-toggle ps-3 pe-3 pt-1 pb-1"  data-bs-target="#loginModal" data-bs-auto-close="outside">@(user.Name.Length > 10 ? user.Name.Substring(0, 10) + "..." : user.Name)</button>
 
                     <ul class="dropdown-menu dropdown-menu-end bg-light-subtle me-3 shadow p-3 rounded-4" aria-labelledby="menuPerfil" style="width: 20%; max-width: 375px; min-width: 285px;">
                         <button class="close-btn" id="fecharMenu">✕</button>

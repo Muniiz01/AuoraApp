@@ -465,6 +465,19 @@ object-fit: cover;
     width: 2rem;
     height: 2rem;
 }
+
+.image-grid img {
+    width: 120px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+    .image-grid img.selected {
+        border-color: #7c876b;
+    }
 /* Center Modal Edit profile */
 .modal-edit-img{
    

@@ -42,11 +42,11 @@
                     <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
                 </svg>
             </button>
-                <img id="profileImage" src="@user.imgPath" class="" alt="Avatar" height="200">
+                <img id="profileImage" src="@user?.imgPath" class="" alt="Avatar" height="200">
         </div>
         <div class="d-flex flex-column justify-content-center mb-3">
-            <p class="fs-4 m-0"> @user.Name </p>
-            <small class="text-muted" style="color: #7c876b !important;">@user.Email</small>
+            <p class="fs-4 m-0"> @user?.Name </p>
+            <small class="text-muted" style="color: #7c876b !important;">@user?.Email</small>
         </div>
 
     </div>
@@ -90,10 +90,17 @@
                             <img class="img-card-grid" src="~/media/img-profile/default-img/default3.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default3.jpg')" />
                             <img class="img-card-grid" src="~/media/img-profile/default-img/default2.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default2.jpg')" />
                         </div>
+                            <button id="bttServerSave" type="button">Save</button>
                         <p id="imageStatus" style="color: green;"></p>
                     </div>
+
                     <div id="div2" class="" style="display: none;">
-                        <input type="file" id="uploadInput" />
+                        <div>
+                                <input type="file" class="" id="uploadInput" />
+                        </div>
+                        <div>
+                                <button id="bttUploadSave" type="button" style="display: none;">Save</button>
+                        </div>
 
                     </div>
                 </div>
