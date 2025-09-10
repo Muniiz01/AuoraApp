@@ -46,7 +46,7 @@ body {
     background-color: transparent;
     color: #7c876b !important;
     width: 200px;
-    text-align:;
+    text-align: center;
     padding: 14px;
     padding-left: 30px;
     text-decoration: none;
@@ -85,7 +85,9 @@ body {
 /* Search box | menu top */
 
 .search-box {
-    margin-left: 100px;
+    margin-left: 10%;
+    width: 26%;
+    min-width: 262px;
 }
 
 .input-search {
@@ -93,7 +95,7 @@ body {
     border-width: 1px;
     border-color: #c7c7c7;
     border-radius: 20px;
-    width: 30rem;
+    width: 100%;
     height: 2.9rem;
     padding: 10px;
 }
@@ -102,7 +104,7 @@ body {
     width: 35px;
     height: 35px;
     border: none;
-    margin: 430px;
+    margin: 23%;
     background-color: transparent;
 }
 
@@ -179,7 +181,50 @@ body {
         background-color: #6a6854b1;
     }
 
+/* Modal Login Settings */
 
+.linkAccountSt{
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+
+
+}
+.linkAccountSt:hover{
+    background-color: lightgrey;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+}
+
+    .close-btn:hover {
+        background-color: #e0e0e0;
+    }
+.cont-img-profile {
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+}
+
+.img-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
 
 /* Index - conteudo principal */
 
@@ -376,3 +421,79 @@ body {
         background-color: #8a8876 !important;
         color: white;
     }
+
+
+/* Edit Profille Page */
+
+
+.body-profille-edit{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+
+    background-color: gainsboro;
+}
+
+.btt-edit {
+    background-color: #6a6854;
+    color: white;
+}
+    .btt-edit:hover {
+        background-color: #8b8972fb;
+        color: white;
+    }
+    .btt-edit:active {
+        background-color: #6a6854;
+        color: white;
+    }
+
+.img-edit-profile {
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.img-edit-profile img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+
+}
+
+.img-edit-profile button{
+    width: 2rem;
+    height: 2rem;
+}
+/* Center Modal Edit profile */
+.modal-edit-img{
+   
+}
+
+.slct-typ-img button{
+    height: 4rem;
+    border: none;
+    background-color: transparent;
+}
+.slct-typ-img button:hover{
+    background-color: lightgrey;
+}
+
+.indicator {
+    display: block;
+    background-color: transparent;
+    width: 30%;
+    height: 4px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+    .indicator.active {
+        background-color: #7c876b;
+        width: 50%; /* aumenta um pouco para dar destaque */
+    }
+
+/* Responsiveness */
+
+
+

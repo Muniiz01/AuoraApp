@@ -19,7 +19,7 @@ namespace Auora.ConDB
         public async Task CreateAsync(Produto produto) =>
             await _produtos.InsertOneAsync(produto);
     }
-    [BsonIgnoreExtraElements] // Ignora campos não mapeados (segurança extra)
+    [BsonIgnoreExtraElements] 
     public class Produto
     {
         [BsonId]

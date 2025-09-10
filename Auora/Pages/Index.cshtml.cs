@@ -7,11 +7,15 @@ namespace Auora.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly ProdutoService _service;
+        private readonly UserService _userService;
 
-        public IndexModel(ILogger<IndexModel> logger, ProdutoService service)
+
+        public IndexModel(ILogger<IndexModel> logger, ProdutoService service, UserService user)
         {
             _logger = logger;
             _service = service;
+            _userService = user;
+
         }
 
         public List<Produto> Produtos { get; set; } = new List<Produto>();
@@ -24,6 +28,8 @@ namespace Auora.Pages
             ProdutoDestaque = todosProdutos.OrderByDescending(p => p.CreatedAt).FirstOrDefault();
 
             Produtos = todosProdutos;
+
+            
         }
     }
 }

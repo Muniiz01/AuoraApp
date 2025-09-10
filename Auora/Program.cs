@@ -18,8 +18,18 @@ builder.Services.AddScoped(sp =>
     return client.GetDatabase(databaseName);
 });
 
-builder.Services.AddScoped<ProdutoService>();
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+    options.HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always;
+    options.Secure = CookieSecurePolicy.Always;
+});
 
+
+builder.Services.AddSession();
+builder.Services.AddScoped<ProdutoService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddAntiforgery();
 builder.Services.AddControllers();
 
 // Add services to the container.
@@ -31,16 +41,16 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+   
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 
+app.UseCookiePolicy();
 app.UseRouting();
-
+app.UseHttpsRedirection();
 app.UseAuthorization();
-
+app.UseSession();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();

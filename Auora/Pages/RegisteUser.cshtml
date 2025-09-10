@@ -1,0 +1,40 @@
+﻿@page
+@model Auora.Pages.RegisteUserModel
+@{
+    ViewData["Title"] = "Criar Conta";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Criar Conta</h3>
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <label asp-for="User.Name" class="form-control">Nome</label>
+                            <input type="text" class="form-control" asp-for="User.Name" placeholder="Digite seu nome">
+                            <span asp-validation-for="User.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="User.Email" class="form-control">E-mail</label>
+                            <input type="email" class="form-control" asp-for="User.Email" placeholder="Digite seu e-mail">
+                            <span asp-validation-for="User.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label asp-for="User.Password" class="form-control">Senha</label>
+                            <input type="password" class="form-control" asp-for="User.Password" placeholder="Digite sua senha">
+                            <span asp-validation-for="User.Password" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Criar Conta</button>
+                    </form>
+                    @section Scripts {
+                        <partial name="_ValidationScriptsPartial" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

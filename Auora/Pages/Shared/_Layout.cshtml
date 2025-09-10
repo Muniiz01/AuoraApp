@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using Auora.ConDB
+@inject UserService UserService
+@{
+    string? userId = Context.Request.Cookies["userId"];
+    User? user = null;
+    if (!string.IsNullOrEmpty(userId))
+    {
+        user = await UserService.GetByIdAsync(userId);
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,6 +21,7 @@
     <link rel="stylesheet" href="~/Auora.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @Html.AntiForgeryToken()
     <!-- Menu topo -->
     <nav class="navbar navbar-expand-xxl fixed-top justify-content-lg-between align-items-center">
         <div class=" d-flex align-items-center">
@@ -37,13 +49,63 @@
 
             <div class="vr"></div>
 
-            <div class="profile d-flex align-items-center gap-3">
+            <div class=" profile d-flex align-items-center gap-3">
+
                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                 </svg>
                 <!-- button trigger modal login -->
-                <button type="button" class="button-login rounded-4 border-0 border-bottom ps-3 pe-3 pt-1 pb-1" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                @if (user != null)
+                {
+                    <button id="menuPerfil" data-bs-toggle="dropdown" aria-expanded="false" type="button" class="button-login rounded-2 border-0 border-bottom dropdown-toggle ps-3 pe-3 pt-1 pb-1" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-auto-close="outside">@(user.Name.Length > 10 ? user.Name.Substring(0, 10) + "..." : user.Name)</button>
+
+                    <ul class="dropdown-menu dropdown-menu-end bg-light-subtle me-3 shadow p-3 rounded-4" aria-labelledby="menuPerfil" style="width: 20%; max-width: 375px; min-width: 285px;">
+                        <button class="close-btn" id="fecharMenu">✕</button>
+                        <li class="w-100 d-flex justify-content-center">
+                            <p class="fs-6">@user.Email</p>
+                        </li>
+                        <li class="w-100 d-flex flex-column align-items-center gap-2">
+                            <div class="cont-img-profile d-flex rounded-circle">
+                                <img src="@user.imgPath" class="img-profile" alt="Avatar">
+                            </div>
+                            <p class="fs-5">Wellcome @user.Name !!!</p>
+                        </li>
+                        <li class="d-flex justify-content-center">
+                            <a asp-page="/EditProfille" class="linkAccountSt btn rounded border-0 p-2 w-75 mt-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person pe-1" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                </svg>
+                                Edit account
+                            </a>
+                        </li>
+                        <li class="w-100">
+                            <form onsubmit="handleLogout(event)" asp-page="/Logout" class="w-100 d-flex justify-content-center">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="button-logout rounded border-0 border-bottom p-2 w-75 mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                                    </svg>
+                                    Sign out of your account
+                                </button>
+                            </form>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+
+                    </ul>
+
+                    <script>
+                          document.getElementById("fecharMenu").addEventListener("click", function () {
+                          const menu = bootstrap.Dropdown.getInstance(document.getElementById("menuPerfil"));
+                          menu.hide();
+                        });
+                    </script>
+                }
+                else
+                {
+                    <button type="button" class="button-login rounded-4 border-0 border-bottom ps-3 pe-3 pt-1 pb-1" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                }
             </div>
         </div>
     </nav>
@@ -66,70 +128,73 @@
         </div>
     </div>
 
-    <!-- Modal Login -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
-        <div class="modal-dialog login-modal slide-in-right">
-            <div class="modal-content">
-                <div class="modal-header border-0 d-flex justify-content-end">
+    @if (user == null)
+    {
+        <!-- Modal Login -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+            <div class="modal-dialog login-modal slide-in-right">
+                <div class="modal-content">
+                    <div class="modal-header border-0 d-flex justify-content-between">
 
-                    <button type="button" class="d-flex border-0 rounded-circle align-items-center" data-bs-dismiss="modal" aria-label="Close" style="width: 30px; height: 30px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="d-flex flex-column ps-5 gap-3">
-                        <h1 class="modal-title fs-4 fw-bolder">Login</h1>
-
-                        <label>New user? <a class="link-primary" href="#">Create an account</a></label>
-                    </div>
-
-                    <form class="mt-5 w-75 d-flex flex-column gap-4 ps-5">
-                        <div>
-                            <label for="emailLoginModalInpt" class="form-label">Emaill address</label>
-                            <input type="email" class="form-control" id="emailLoginModalInpt" name="email" value="" />
-                        </div>
-                        <div>
-                            <label for="passwordLoginModalInpt" class="form-label">Password</label>
-                            <input type="password" id="passwordLoginModalInpt" class="form-control" name="password" value="" />
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button class=" btn-access w-25 rounded-4 p-2 border-0 text-center">Access</button>
-                        </div>
-
-                    </form>
-
-                    <div class="w-75 mt-5" style="border-top-style: solid; border-width: 0.1px; border-color: #7c876b; margin: auto;"></div>
-
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        <p class="mt-2">or</p>
-
-                        <button class="btn btn-outline-secondary w-50 rounded-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
-                                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        <div></div>
+                        <button type="button" class="d-flex border-0 rounded-circle align-items-center" data-bs-dismiss="modal" aria-label="Close" style="width: 30px; height: 30px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                             </svg>
-                            continue with Google
-                        </button>
-
-                        <button class="btn btn-outline-secondary mt-4 w-50 rounded-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-microsoft" viewBox="0 0 16 16">
-                                <path d="M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z" />
-                            </svg>
-                            continue with Microsoft
                         </button>
                     </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="d-flex flex-column ps-5 gap-3">
+                            <h1 class="modal-title fs-4 fw-bolder">Login</h1>
+
+                            <label>New user? <a class="link-primary" href="/RegisteUser">Create an account</a></label>
+                        </div>
+
+                        <form id="LoginForm" onsubmit="handleLogin(event)" class="mt-5 w-75 d-flex flex-column gap-4 ps-5">
+                            <div id="loginErrorMessage" class="alert alert-danger" style="display: none;">
+                            </div>
+                            <div>
+                                <label for="emailLoginModalInpt" class="form-label">Emaill address</label>
+                                <input type="email" class="form-control" id="emailLoginModalInpt" name="email" value="" />
+                            </div>
+                            <div>
+                                <label for="passwordLoginModalInpt" class="form-label">Password</label>
+                                <input type="password" id="passwordLoginModalInpt" class="form-control" name="password" value="" />
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class=" btn-access w-25 rounded-4 p-2 border-0 text-center">
+                                    <span class="spinner-border spinner-border-sm" role="status" style="display: none;"></span>
+                                    Access
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div class="w-75 mt-5" style="border-top-style: solid; border-width: 0.1px; border-color: #7c876b; margin: auto;"></div>
+
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <p class="mt-2">or</p>
+
+                            <button class="btn btn-outline-secondary w-50 rounded-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                                    <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                                </svg>
+                                continue with Google
+                            </button>
+                        </div>
+
+
+                    </div>
+
+
 
                 </div>
-
-                <div class="modal-footer border-0 d-flex justify-content-center">
-                </div>
-
             </div>
         </div>
-    </div>
-
+    }
 
     <!-- Menu lateral -->
 
@@ -202,14 +267,19 @@
 
     </div>
 
-
-
-
-
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            });
+        </script>
+    }
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
