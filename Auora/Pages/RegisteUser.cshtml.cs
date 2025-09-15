@@ -36,7 +36,7 @@ namespace Auora.Pages
 
             await _userService.CreateAsync(User);
 
-            SetCookie("userId", User.Id);
+            SetCookie("UserId", User.Id);
 
             return RedirectToPage("/Index");
         }
