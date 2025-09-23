@@ -24,124 +24,148 @@
 <div class="body-profille-edit rounded">
     <form id="editForm" method="post" asp-page-handler="UpdateUser">
         @Html.AntiForgeryToken()
-    <div class="d-flex flex-row justify-content-between align-items-center">
-        <h2 class="mb-3 ">My Account</h2>
-        <button id="bttTrigger" class="btt-edit btn btn-secondary mb-3 pt-2 pb-2 ps-3 pe-3 border-0 rounded" type="button" onclick="inputsStatus(1)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
-            </svg>  Edit
-        </button>
-    </div>
-
-
-    <div class="d-flex flex-row gap-3 w-100">
-        <div class="img-edit-profile position-relative rounded-circle">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-edit-img" class="btn btn-outline-light  position-absolute bottom-0 end-50 start-50 m-3 rounded-circle d-flex align-items-center justify-content-center p-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                    <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z" />
-                    <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
-                </svg>
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h2 class="mb-3 ">My Account</h2>
+            <button id="bttTrigger" class="btt-edit btn btn-secondary mb-3 pt-2 pb-2 ps-3 pe-3 border-0 rounded" type="button" onclick="inputsStatus(1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
+                </svg>  Edit
             </button>
+        </div>
+
+
+        <div class="d-flex flex-row gap-3 w-100">
+            <div class="img-edit-profile position-relative rounded-circle">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-edit-img" class="btn btn-outline-light  position-absolute bottom-0 end-50 start-50 m-3 rounded-circle d-flex align-items-center justify-content-center p-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z" />
+                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+                    </svg>
+                </button>
                 <img id="profileImage" src="@user?.imgPath" class="" alt="Avatar" height="200">
+            </div>
+            <div class="d-flex flex-column justify-content-center mb-3">
+                <p class="fs-4 m-0"> @user?.Name </p>
+                <small class="text-muted" style="color: #7c876b !important;">@user?.Email</small>
+            </div>
+
         </div>
-        <div class="d-flex flex-column justify-content-center mb-3">
-            <p class="fs-4 m-0"> @user?.Name </p>
-            <small class="text-muted" style="color: #7c876b !important;">@user?.Email</small>
-        </div>
 
-    </div>
-
-    <div class="modal fade" id="modal-edit-img" tabindex="-1" aria-labelledby="modal-edit-img" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-header d-flex flex-column gap-3 pb-0">
-                    <div class="d-flex justify-content-around w-100">
-                        <h1 class="modal-title fs-5" id="modal-edit-img">Change your picture</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="slct-typ-img d-flex gap-0 w-100 h-50">
-                        <button onclick="showDiv('div1', this)" type="button" class="w-50">
-                            <span class="d-flex flex-column justify-content-between align-items-center pt-2 h-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-palette" viewBox="0 0 16 16">
-                                    <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
-                                    <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8m-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7" />
-                                </svg>
-                                <p class="mb-0">Illustrations</p>
-                                <span class="indicator active"></span>
-                            </span>
-                        </button>
-                        <button onclick="showDiv('div2', this)" type="button" class="w-50">
-                            <span class="d-flex flex-column justify-content-between align-items-center pt-2 h-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
-                                    <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5" />
-                                </svg>
-                                <p class="mb-0">From computer</p>
-                                <span class="indicator"></span>
-                            </span>
-
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div id="div1" class="" style="display: block;">
-
-                        <span> Abstract geometries </span>
-                        <div class="image-grid">
-                            <img class="img-card-grid" src="~/media/img-profile/default-img/default3.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default3.jpg')" />
-                            <img class="img-card-grid" src="~/media/img-profile/default-img/default2.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default2.jpg')" />
+        <div class="modal fade" id="modal-edit-img" tabindex="-1" aria-labelledby="modal-edit-img" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-header d-flex flex-column gap-3 pb-0">
+                        <div class="d-flex justify-content-around w-100">
+                            <h1 class="modal-title fs-5" id="modal-edit-img">Change your picture</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="slct-typ-img d-flex gap-0 w-100 h-50">
+                            <button onclick="showDiv('div1', this)" type="button" class="w-50">
+                                <span class="d-flex flex-column justify-content-between align-items-center pt-2 h-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-palette" viewBox="0 0 16 16">
+                                        <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                                        <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8m-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7" />
+                                    </svg>
+                                    <p class="mb-0">Illustrations</p>
+                                    <span class="indicator active"></span>
+                                </span>
+                            </button>
+                            <button onclick="showDiv('div2', this)" type="button" class="w-50">
+                                <span class="d-flex flex-column justify-content-between align-items-center pt-2 h-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
+                                        <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5" />
+                                    </svg>
+                                    <p class="mb-0">From computer</p>
+                                    <span class="indicator"></span>
+                                </span>
+
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="div1" class="" style="display: block;">
+
+                            <span> Abstract geometries </span>
+                            <div class="image-grid">
+                                <img class="img-card-grid" src="~/media/img-profile/default-img/default3.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default3.jpg')" />
+                                <img class="img-card-grid" src="~/media/img-profile/default-img/default2.jpg" alt="Alternate Text" onclick="saveImage('/media/img-profile/default-img/default2.jpg')" />
+                            </div>
                             <button id="bttServerSave" type="button">Save</button>
-                        <p id="imageStatus" style="color: green;"></p>
-                    </div>
+                            <p id="imageStatus" style="color: green;"></p>
+                        </div>
 
-                    <div id="div2" class="" style="display: none;">
-                        <div>
+                        <div id="div2" class="" style="display: none;">
+                            <div>
                                 <input type="file" class="" id="uploadInput" />
-                        </div>
-                        <div>
+                            </div>
+                            <div>
                                 <button id="bttUploadSave" type="button" style="display: none;">Save</button>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <hr />
-    
+        <hr />
+
         <fieldset id="fieldsetStatus" disabled>
+            <div class="container m-0">
+                <label class="fs-4 fw-bolder mb-2">Personal Details</label>
+                <div class="row row-cols-2 g-4">
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.Name" class="form-label"></label>
+                        <input asp-for="Input.Name" class="form-control" />
+                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Input.Name" class="form-label"></label>
-                <input asp-for="Input.Name" class="form-control" />
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                        <input asp-for="Input.PhoneNumber" id="phoine" class="form-control" />
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.BirthDate" class="form-label"></label>
+                        <input asp-for="Input.BirthDate" type="date" class="form-control" />
+                        <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Input.Address" class="form-label"></label>
-                <input asp-for="Input.Address" class="form-control" />
-                <span asp-validation-for="Input.Address" class="text-danger"></span>
-            </div>
+            <hr>
+            
+            <div class="container m-0 mb-4">
+                <label class="fs-4 fw-bolder mb-2">Address</label>
+                <div class="row row-cols-2 g-4">
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.Street" class="form-label"></label>
+                        <input asp-for="Input.Street" class="form-control" />
+                        <span asp-validation-for="Input.Street" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Input.Country" class="form-label"></label>
-                <input asp-for="Input.Country" class="form-control" />
-                <span asp-validation-for="Input.Country" class="text-danger"></span>
-            </div>
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.Country" class="form-label"></label>
+                        <input asp-for="Input.Country" class="form-control" />
+                        <span asp-validation-for="Input.Country" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.PostalCode" class="form-label"></label>
+                        <input asp-for="Input.PostalCode" id="postal" class="form-control" />
+                        <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Input.BirthDate" class="form-label"></label>
-                <input asp-for="Input.BirthDate" type="date" class="form-control" />
-                <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                    <div class="form-group mb-3 col">
+                        <label asp-for="Input.City" class="form-label"></label>
+                        <input asp-for="Input.City" class="form-control" />
+                        <span asp-validation-for="Input.City" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+            
 
             <button type="submit" class="btn btn-primary">Save</button>
             <button onclick="inputsStatus(2)" type="button" class="btn btn-secondary">Cancel</button>
@@ -151,5 +175,24 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+                document.addEventListener("DOMContentLoaded", function () {
+            //Phone
+            Inputmask({
+                mask: "(999) 999-9999",
+                removeMaskOnSubmit: true,
+                autoUnmask: true
+            }).mask("#phone");
+
+            Inputmask({
+                mask: "99999[-9999]",     // aceita 5 ou 9 dígitos
+                greedy: false,            // deixa opcional a parte -9999
+                removeMaskOnSubmit: true,
+                autoUnmask: true
+            }).mask("#postal");
+        });
+    </script>
 }
 <script src="~/js/EditProfile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8-beta.29/inputmask.min.js"></script>

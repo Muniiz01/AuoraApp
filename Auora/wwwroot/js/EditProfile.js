@@ -118,5 +118,6 @@ function inputsStatus(status) {
     }
 }
 
+//Mascara PhoneNumber and PostalCode
 
 

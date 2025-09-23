@@ -11,7 +11,13 @@ namespace Auora.ConDB
         public string? imgPath { get; set; }
 
         [StringLength(200, ErrorMessage = "O endereço não pode exceder 200 caracteres")]
-        public string? Address { get; set; }
+        public string? Street { get; set; }
+
+        [StringLength(20, ErrorMessage = "O PostalCode não pode exceder 20 caracteres")]
+        public string? PostalCode { get; set; }
+
+        [StringLength(100, ErrorMessage = "A cidade não pode exceder 100 caracteres")]
+        public string? City { get; set; }
 
         [StringLength(200, ErrorMessage = "O país não pode exceder 200 caracteres")]
         public string? Country { get; set; }

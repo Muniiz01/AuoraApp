@@ -95,7 +95,9 @@ namespace Auora.ConDB
             else { 
                 var update = Builders<User>.Update
                     .Set(u => u.Name, updatedUser.Name)
-                    .Set(u => u.Address, updatedUser.Address)
+                    .Set(u => u.Street, updatedUser.Street)
+                    .Set(u => u.PostalCode, updatedUser.PostalCode)
+                    .Set(u => u.City, updatedUser.City)
                     .Set(u => u.Country, updatedUser.Country)
                     .Set(u => u.PhoneNumber, updatedUser.PhoneNumber)
                     .Set(u => u.BirthDate, updatedUser.BirthDate)
@@ -128,7 +130,13 @@ namespace Auora.ConDB
         public string? imgPath { get; set; }
 
         [StringLength(200, ErrorMessage = "O endereço não pode exceder {1} caracteres")]
-        public string? Address { get; set; }
+        public string? Street { get; set; }
+
+        [StringLength(20, ErrorMessage = "O PostalCode não pode exceder {1} caracteres")]
+        public string? PostalCode { get; set; }
+
+        [StringLength(100, ErrorMessage = "A cidade não pode exceder {1} caracteres")]
+        public string? City { get; set; }
 
         [StringLength(200, ErrorMessage = "O pais não pode exceder {1} caracteres")]
         public string? Country { get; set; }

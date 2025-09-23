@@ -38,8 +38,10 @@ namespace Auora.Pages
             Input = new EditProfileViewModel
             {
                 Name = user.Name,
-                Address = user.Address,
+                Street = user.Street,
                 Country = user.Country,
+                PostalCode = user.PostalCode,
+                City = user.City,
                 PhoneNumber = user.PhoneNumber,
                 BirthDate = user.BirthDate
             };
@@ -66,9 +68,11 @@ namespace Auora.Pages
 
 
                 existingUser.Name = Input.Name;
-                existingUser.Address = Input.Address;
+                existingUser.Street = Input.Street;
                 existingUser.imgPath = Input.imgPath;
                 existingUser.Country = Input.Country;
+                existingUser.PostalCode = Input.PostalCode;
+                existingUser.City = Input.City;
                 existingUser.PhoneNumber = Input.PhoneNumber;
                 existingUser.BirthDate = Input.BirthDate;
                 await _userService.UpdateProfileAsync(userId, existingUser, 0);
