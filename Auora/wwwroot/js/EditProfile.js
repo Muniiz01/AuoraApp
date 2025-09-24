@@ -35,19 +35,26 @@ document.getElementById("postal").addEventListener("input", function () {
 
 //Botoes modal
 
+
+
 // salvar imagem da galeria
 function saveImage(path) {
-
-    document.getElementById("bttServerSave").addEventListener("click", function () {
-        updateImageOnServer(path, false);
-    })
-
+    const btn = document.getElementById("bttServerSave");
+    document.getElementById("bttServerSave").style.display = "block"
 
     document.querySelectorAll(".image-grid img").forEach(img => {
         img.classList.remove("selected");
     });
     event.target.classList.add("selected");
+    
+
+    btn.onclick = function () {
+        console.log(path)
+        updateImageOnServer(path, false);
+    };
+    
 }
+
 
 //função upload do computador
 
@@ -88,7 +95,7 @@ document.getElementById("uploadInput").addEventListener("change", function () {
     })
 });
 
-// função genérica para atualizar no servidor
+// função para atualizar no servidor
 function updateImageOnServer(path, fromUpload) {
     fetch('/EditProfille?handler=UpdateImage', {
         method: 'POST',

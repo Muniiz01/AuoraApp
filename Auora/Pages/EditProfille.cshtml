@@ -99,27 +99,28 @@
                             </div>
                             <span class="fs-6">Lakes</span>
                             <div class="image-grid">
-                                <img class="img-card-grid" src="~/media/img-profile/default-img/lakes/lakes1.png" onclick="saveImage('//media/img-profile/default-img/lakes/lakes1.png')" alt="Alternate Text" />
+                                <img class="img-card-grid" src="~/media/img-profile/default-img/lakes/lakes1.png" onclick="saveImage('/media/img-profile/default-img/lakes/lakes1.png')" alt="Alternate Text" />
                                 <img class="img-card-grid" src="~/media/img-profile/default-img/lakes/lakes2.png" onclick="saveImage('/media/img-profile/default-img/lakes/lakes2.png')" alt="Alternate Text" />
                                 <img class="img-card-grid" src="~/media/img-profile/default-img/lakes/lakes3.png" onclick="saveImage('/media/img-profile/default-img/lakes/lakes3.png')" alt="Alternate Text" />
                                 <img class="img-card-grid" src="~/media/img-profile/default-img/lakes/lakes4.png" onclick="saveImage('/media/img-profile/default-img/lakes/lakes4.png')" alt="Alternate Text" />
                             </div>
-                            <button id="bttServerSave" type="button">Save</button>
+                            <button id="bttServerSave" class="btn btn-primary mt-3" type="button" style="display: none;">Save</button>
                             <p id="imageStatus" style="color: green;"></p>
                         </div>
 
                         <div id="div2" class="" style="display: none;">
-                            <div class="">
-                                <label for="uploadInput" class="form-label">Selecione ou arraste uma imagem:</label>
-                                <input type="file" class="form-control h-50" name="Imagem" accept="image/*" id="uploadInput" />
+                            <div class="border border-2 border-secondary-subtle rounded p-4 text-center bg-light">
+                                <p class="mb-0">Click to select</p>
+                                <br />
+                                <br />
+                                <br />
+                                <input type="file" class="form-control" name="Imagem" accept="image/*" id="uploadInput"/>
                             </div>
                             <br />
                             <br />
-                            <br />
-                            <br />
-                            <br />
+                            
                             <div>
-                                <button id="bttUploadSave" type="button" style="display: none;">Save</button>
+                                <button id="bttUploadSave" class="btn btn-primary" type="button" style="display: none;">Save</button>
                             </div>
 
                         </div>
