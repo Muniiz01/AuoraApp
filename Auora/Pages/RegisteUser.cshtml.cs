@@ -29,7 +29,7 @@ namespace Auora.Pages
             Random rnd = new Random();
 
             User.Password = UserService.HashPassword(User.Password);
-            User.imgPath = $"/media/img-profile/default-img/default{rnd.Next(1, 3)}.jpg";
+            User.imgPath = $"/media/img-profile/default-img/abstract/default{rnd.Next(1, 3)}.jpg";
             User.CreatedAt = DateTime.UtcNow;
             User.UpdatedAt = DateTime.UtcNow;
             User.IsActive = true;

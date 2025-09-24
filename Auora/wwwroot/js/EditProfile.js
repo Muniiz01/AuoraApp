@@ -1,3 +1,38 @@
+//Mascara PhoneNumber and PostalCode
+document.getElementById("phone").addEventListener("input", function () {
+    let v = this.value.replace(/\D/g, ""); // somente números
+    if (v.length > 10) v = v.slice(0, 10); // máximo 10 dígitos
+
+    if (v.length > 6) {
+        // (123) 456-7890
+        v = v.replace(/^(\d{3})(\d{3})(\d{0,4})$/, "($1) $2-$3");
+    } else if (v.length > 3) {
+        // (123) 456
+        v = v.replace(/^(\d{3})(\d{0,3})$/, "($1) $2");
+    } else if (v.length > 0) {
+        // (123
+        v = v.replace(/^(\d{0,3})$/, "($1");
+    }
+
+    this.value = v;
+});
+
+
+document.getElementById("postal").addEventListener("input", function () {
+    let v = this.value.replace(/\D/g, ""); // só números
+    if (v.length > 9) v = v.slice(0, 9);   // máximo 9 dígitos
+
+    // Se houver mais de 5 dígitos, aplica o hífen para ZIP+4
+    if (v.length > 5) {
+        v = v.slice(0, 5) + "-" + v.slice(5);
+    }
+
+    this.value = v;
+});
+
+
+
+
 //Botoes modal
 
 // salvar imagem da galeria
@@ -103,7 +138,7 @@ function showDiv(id, btn) {
 
 function inputsStatus(status) {
     const btn = document.getElementById("bttTrigger");
-    const fieldset = document.getElementById("fieldsetStatus"); // agora sim
+    const fieldset = document.getElementById("fieldsetStatus");
     const form = document.getElementById("editForm");
     if (status === 1) {
 
@@ -117,7 +152,5 @@ function inputsStatus(status) {
         btn.disabled = false;
     }
 }
-
-//Mascara PhoneNumber and PostalCode
 
 

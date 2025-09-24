@@ -77,7 +77,7 @@ namespace Auora.Pages
                 existingUser.BirthDate = Input.BirthDate;
                 await _userService.UpdateProfileAsync(userId, existingUser, 0);
 
-                TempData["SuccessMessage"] = "Perfil atualizado com sucesso.";
+                TempData["SuccessMessage"] = "Profile updated successfully.";
                 return RedirectToPage();
             }
             catch (Exception ex)
@@ -100,14 +100,14 @@ namespace Auora.Pages
             {
                 var userId = Request.Cookies["UserId"];
                 if (string.IsNullOrEmpty(userId))
-                    return new JsonResult(new { success = false, message = "Usuário não encontrado." });
+                    return new JsonResult(new { success = false, message = "User not found." });
 
                 var existingUser = await _userService.GetByIdAsync(userId);
                 if (existingUser == null)
-                    return new JsonResult(new { success = false, message = "Usuário inválido." });
+                    return new JsonResult(new { success = false, message = "Invalid user." });
 
                 if (string.IsNullOrEmpty(request.imgPath))
-                    return new JsonResult(new { success = false, message = "Nenhuma imagem selecionada." });
+                    return new JsonResult(new { success = false, message = "No images selected." });
 
                 existingUser.imgPath = request.imgPath;
                 await _userService.UpdateProfileAsync(userId, existingUser, 1);
@@ -116,8 +116,8 @@ namespace Auora.Pages
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao atualizar imagem");
-                return new JsonResult(new { success = false, message = "Erro no servidor." });
+                _logger.LogError(ex, "Error updating image");
+                return new JsonResult(new { success = false, message = "Server error." });
             }
 
 
@@ -128,7 +128,7 @@ namespace Auora.Pages
             try
             {
                 if (file == null || file.Length == 0)
-                    return new JsonResult(new { success = false, message = "Nenhum arquivo enviado." });
+                    return new JsonResult(new { success = false, message = "No files sent." });
 
                 var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
                 var filePath = Path.Combine("wwwroot/media/img-profile/uploads", fileName);
@@ -142,18 +142,20 @@ namespace Auora.Pages
 
                 var userId = Request.Cookies["UserId"];
                 if (string.IsNullOrEmpty(userId))
-                    return new JsonResult(new { success = false, message = "Usuário não encontrado." });
+                    return new JsonResult(new { success = false, message = "User not found." });
 
                 var existingUser = await _userService.GetByIdAsync(userId);
                 if (existingUser == null)
-                    return new JsonResult(new { success = false, message = "Usuário inválido." });
+                    return new JsonResult(new { success = false, message = "Invalid user." });
 
+                //funcao que deleta imagem anterior... desabilitada (temporario)
+                /*
                 var oldImg = existingUser.imgPath;
                 if (System.IO.File.Exists($"wwwroot{oldImg}"))
                 {
                     System.IO.File.Delete($"wwwroot{oldImg}");
                 }
-                
+                */
 
                 existingUser.imgPath = relativePath;
                 await _userService.UpdateProfileAsync(userId, existingUser, 1);
@@ -162,8 +164,8 @@ namespace Auora.Pages
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro no upload da imagem");
-                return new JsonResult(new { success = false, message = "Erro no servidor." });
+                _logger.LogError(ex, "Image upload error");
+                return new JsonResult(new { success = false, message = "Server error." });
             }
         }
     }
