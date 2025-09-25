@@ -27,6 +27,7 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 
 
 builder.Services.AddSession();
+
 builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddAntiforgery();

@@ -18,6 +18,12 @@ namespace Auora.ConDB
 
         public async Task CreateAsync(Produto produto) =>
             await _produtos.InsertOneAsync(produto);
+
+        public async Task<Produto?> GetByIdAsync(string id)
+        {
+            var filter = Builders<Produto>.Filter.Eq("_id", ObjectId.Parse(id));
+            return await _produtos.Find(filter).FirstOrDefaultAsync();
+        }
     }
     [BsonIgnoreExtraElements] 
     public class Produto
