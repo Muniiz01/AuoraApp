@@ -448,14 +448,34 @@ body {
     }
 
 
+
+/* Product */
+
+.pg-prd-img{
+    width: 43%;
+    height: 29rem;
+}
+    .pg-prd-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;  
+    }
+.bi-star-fill{
+    color: gold;
+}
+
+.pg-prd-mn {
+    width: 45%;
+    height: 25rem;
+}
+.pg-prd-seli{
+    margin-top: 18%;
+}
 /* Edit Profille Page */
-
-
-.body-profille-edit{
+.body-profille-edit {
     width: 100%;
     height: 100%;
     padding: 15px;
-
     background-color: gainsboro;
 }
 
