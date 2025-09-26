@@ -7,8 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\media\img-profile\uploads\19b871a1-4cf1-4aff-b65b-17d706ffafcb.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\202b2a3d-18c8-48fd-ab3f-103a0a1f66b2.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\2cef324f-2978-4a6c-8652-b6b67dcdae60.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\3f4c2380-1f3f-4946-bc9e-9f06f043d1e1.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\4298bb5f-848a-47a8-9194-9a4aafeb8b68.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\4948298f-b1ae-4c1e-aa84-f475ecfdd684.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\626e5654-d0d5-4314-95d9-cb0016245223.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\83d4170c-b6b1-407c-8f7c-b8bb8ea944c9.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\92001d53-5e83-4038-a8e6-8c07113d6141.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\9503f0be-61da-4290-830b-077089c40d5e.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\b7fa5a58-c7cf-481f-86e5-896d83f5b2a7.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\e4a8c581-70bc-4466-9c6b-ebdf5d349b81.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\e4fc64bd-5bb5-42b8-a371-db40a4b35d48.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\f7ef4392-77cd-41e2-a9ea-48aeb431a10d.png" />
+    <Content Remove="wwwroot\media\img-profile\uploads\f7f8266e-28ed-4dff-b335-8ae73a6eb58e.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="3.4.2" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\media\img-profile\uploads\" />
   </ItemGroup>
 
 </Project>

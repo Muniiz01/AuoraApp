@@ -13,15 +13,26 @@ body {
     padding-right: 0px;
 }
 
-.sidebar {
-    position: fixed;
-    top: 90px;
-    bottom: 0;
-    left: 0;
-    width: 280px;
-    background-color: #f5f4f1;
-    overflow-y: auto;
+.img-user-layout {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
 }
+    .img-user-layout img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 90px;
+        bottom: 0;
+        left: 0;
+        width: 280px;
+        background-color: #f5f4f1;
+        overflow-y: auto;
+    }
 
 .content {
     margin-left: 280px;
@@ -46,7 +57,7 @@ body {
     background-color: transparent;
     color: #7c876b !important;
     width: 200px;
-    text-align:;
+    text-align: center;
     padding: 14px;
     padding-left: 30px;
     text-decoration: none;
@@ -85,7 +96,9 @@ body {
 /* Search box | menu top */
 
 .search-box {
-    margin-left: 100px;
+    margin-left: 10%;
+    width: 26%;
+    min-width: 262px;
 }
 
 .input-search {
@@ -93,7 +106,7 @@ body {
     border-width: 1px;
     border-color: #c7c7c7;
     border-radius: 20px;
-    width: 30rem;
+    width: 100%;
     height: 2.9rem;
     padding: 10px;
 }
@@ -102,7 +115,7 @@ body {
     width: 35px;
     height: 35px;
     border: none;
-    margin: 430px;
+    margin: 23%;
     background-color: transparent;
 }
 
@@ -179,14 +192,66 @@ body {
         background-color: #6a6854b1;
     }
 
+/* Modal Login Settings */
+
+.linkAccountSt{
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+
+
+}
+.linkAccountSt:hover{
+    background-color: lightgrey;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+}
+
+    .close-btn:hover {
+        background-color: #e0e0e0;
+    }
+.cont-img-profile {
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+}
+
+.img-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Register */
+
+.register-body {
+    width: 100%;
+    height: 78vh;
+    background-image: url('/media/RegisterBn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 
 /* Index - conteudo principal */
-
-
-
 /*promotional banner*/
-
 .promotional-banner {
     background-image: url('/media/banner.png');
     background-size: cover;
@@ -354,15 +419,20 @@ body {
 
 
 .img-card-grid {
-    height: 18rem;
+    height: 13rem;
     object-fit: cover;
 }
 
 .card {
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    
 }
 
+.container-grid .card {
+    min-height: 27rem;
+    max-height: 30rem;
+}
 .container-grid .card:hover {
     transform: scale(1.02);
 }
@@ -376,3 +446,113 @@ body {
         background-color: #8a8876 !important;
         color: white;
     }
+
+
+
+/* Product */
+
+.pg-prd-img{
+    width: 43%;
+    height: 29rem;
+}
+    .pg-prd-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;  
+    }
+.bi-star-fill{
+    color: gold;
+}
+
+.pg-prd-mn {
+    width: 45%;
+    height: 25rem;
+}
+.pg-prd-seli{
+    margin-top: 18%;
+}
+/* Edit Profille Page */
+.body-profille-edit {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: gainsboro;
+}
+
+.btt-edit {
+    background-color: #6a6854;
+    color: white;
+}
+    .btt-edit:hover {
+        background-color: #8b8972fb;
+        color: white;
+    }
+    .btt-edit:active {
+        background-color: #6a6854;
+        color: white;
+    }
+
+.img-edit-profile {
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.img-edit-profile img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+
+}
+
+.img-edit-profile button{
+    width: 2rem;
+    height: 2rem;
+}
+
+.image-grid img {
+    width: 120px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+    .image-grid img.selected {
+        border-color: #7c876b;
+    }
+/* Center Modal Edit profile */
+.modal-edit-img{
+   
+}
+
+.slct-typ-img button{
+    height: 4rem;
+    border: none;
+    background-color: transparent;
+}
+.slct-typ-img button:hover{
+    background-color: lightgrey;
+}
+
+.indicator {
+    display: block;
+    background-color: transparent;
+    width: 30%;
+    height: 4px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+    .indicator.active {
+        background-color: #7c876b;
+        width: 50%; /* aumenta um pouco para dar destaque */
+    }
+
+
+/* Responsiveness */
+
+
+

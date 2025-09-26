@@ -1,0 +1,54 @@
+﻿@page
+@model Auora.Pages.RegisteUserModel
+@{
+    ViewData["Title"] = "Criar Conta";
+}
+<style>
+    .content{
+        background-image: url('/media/RegisterBn3.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<div class="register-body ms-4 m-0 mt-5">
+    <h3 class="fw-bolder text-start mb-4">Create an Account</h3>
+    <div class="w-50 p-3 ps-4 rounded" style="height: 500px;">
+        <form method="post" class="card-body w-100">
+            <div class="form-group w-75 mb-3">
+                <label asp-for="User.Name" class="form-label">Name</label>
+                <input type="text" class="form-control bg-body-secondary" asp-for="User.Name" placeholder="Enter your name">
+                <span asp-validation-for="User.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-group w-75">
+                <label asp-for="User.Email" class="form-label">Email</label>
+                <input type="email" class="form-control bg-body-secondary" asp-for="User.Email" placeholder="Enter your email">
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-group w-50">
+                <label asp-for="User.Password" class="form-label">Password</label>
+                <input type="password" class="form-control bg-body-secondary" asp-for="User.Password" placeholder="Enter your password">
+                <span asp-validation-for="User.Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3 w-50">Create Account</button> 
+        </form>
+        <div class="d-flex flex-row mt-3 mb-2 gap-1">
+            <div style="width: 22%;"><hr /></div>
+            <p class="m-1">or</p>
+            <div style="width: 22%;"><hr /></div>
+        </div>
+        
+        <button class="btn btn-outline-secondary w-50 rounded-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+            </svg>
+            continue with Google
+        </button>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+</div>
